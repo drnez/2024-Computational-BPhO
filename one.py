@@ -2,8 +2,8 @@ import matplotlib
 import matplotlib.pyplot as plt
 import math
 
-matplotlib.use('Qt5Agg')              # Use TkAgg backend
-fig, ax = plt.subplots()             # Create a figure containing a single Axes.
+matplotlib.use('Qt5Agg')
+fig, ax = plt.subplots()
 
 # user adjustables:
 theta = 45
@@ -20,9 +20,6 @@ x_now = 0
 y_now = h
 
 while (y_now >= 0):
-    x.append(x_now)
-    y.append(y_now)
-
     ux = u*math.cos(math.radians(theta))
     uy = u*math.sin(math.radians(theta))
     vx = ux
@@ -31,7 +28,10 @@ while (y_now >= 0):
     x_now = ux*t
     y_now = h + uy*t - 0.5*g*t*t
 
+    x.append(x_now)
+    y.append(y_now)
+
     t += t_step
 
-ax.plot(x, y)  # Plot some data on the Axes.
-plt.show()                           # Show the figure.
+ax.plot(x, y)
+plt.show()
