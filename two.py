@@ -36,6 +36,7 @@ Range = ( (u*u)/g ) * ( ist*ict + ict*math.sqrt( ist*ist + (2*g*h)/(u*u) ) )
 total_time = Range / (u*ict)
 x_apogee = ( (u*u)/g ) * ist*ict
 y_apogee = h + ( (u*u)/(2*g) )*ist*ist
+print(str(x_apogee) + "," + str(y_apogee))
 
 while (x_now <= Range):
     x.append(x_now)
