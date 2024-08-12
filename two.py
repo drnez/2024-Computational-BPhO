@@ -17,12 +17,10 @@ theta = 42
 u = 10
 h = 1
 g = 9.81
-t_step = 0.02
 
 # initalisation:
 x = []
 y = []
-t = 0
 x_now = 0
 y_now = h
 
@@ -31,21 +29,22 @@ ist = sin(theta)
 ict = cos(theta)
 itt = tan(theta)
 Range = ( (u*u)/g ) * ( ist*ict + ict*math.sqrt( ist*ist + (2*g*h)/(u*u) ) )
+x_step = (1/50) * Range
 
 # print to user as useful info, not for graph:
 total_time = Range / (u*ict)
 x_apogee = ( (u*u)/g ) * ist*ict
 y_apogee = h + ( (u*u)/(2*g) )*ist*ist
 print(str(x_apogee) + "," + str(y_apogee))
+print("Range: " + str(Range))
 
 while (x_now <= Range):
+    print("x: " + str(x_now) + ", y: " + str(y_now))
     x.append(x_now)
     y.append(y_now)
 
-    x_now = t * u*ict
+    x_now += x_step
     y_now = h + x_now*itt - ( (g/(2*u*u))*(1+itt*itt)*(x_now*x_now) )
-
-    t += t_step
 
 ax.plot(x, y)
 plt.show()
